@@ -135,7 +135,7 @@ PHP_INI_BEGIN()
         OnUpdateString, http_ip_whitelist, zend_spx_globals, spx_globals
     )
     STD_PHP_INI_ENTRY(
-        "spx.http_ui_assets_dir", SPX_HTTP_UI_ASSETS_DIR, PHP_INI_SYSTEM,
+        "spx.http_ui_assets_dir", "", PHP_INI_SYSTEM,
         OnUpdateString, http_ui_assets_dir, zend_spx_globals, spx_globals
     )
     STD_PHP_INI_ENTRY(

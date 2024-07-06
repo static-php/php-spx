@@ -1,7 +1,7 @@
-PHP_ARG_ENABLE(SPX, whether to enable SPX extension,
+PHP_ARG_ENABLE(spx, whether to enable SPX extension,
 [ --enable-spx   Enable SPX extension])
 
-PHP_ARG_ENABLE(SPX-DEV, whether to enable SPX developer build flags,
+PHP_ARG_ENABLE(spx-dev, whether to enable SPX developer build flags,
 [  --enable-spx-dev   Compile SPX with debugging symbols])
 
 if test -z "$PHP_ZLIB_DIR"; then
@@ -17,7 +17,7 @@ if test "$PHP_SPX" = "yes"; then
 
     AC_DEFINE(HAVE_SPX, 1, [spx])
 
-    CFLAGS="-Werror -Wall -O3 -pthread -std=gnu90"
+    CFLAGS=""
     if test "$CONTINUOUS_INTEGRATION" = "true"
     then
         CFLAGS="$CFLAGS -DCONTINUOUS_INTEGRATION"

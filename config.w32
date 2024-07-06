@@ -1,0 +1,36 @@
+// vim:ft=javascript
+
+ARG_ENABLE('spx', 'Whether to enable SPX support', 'no');
+ARG_ENABLE('spx-dev', 'whether to enable SPX developer build flags', 'no');
+
+if(PHP_SPX != 'no')
+{
+	var spx_sources = 	'src/php_spx.c               ' +
+						'src/spx_profiler.c          ' +
+						'src/spx_profiler_tracer.c   ' +
+						'src/spx_profiler_sampler.c  ' +
+						'src/spx_reporter_full.c     ' +
+						'src/spx_reporter_fp.c       ' +
+						'src/spx_reporter_trace.c    ' +
+						'src/spx_metric.c            ' +
+						'src/spx_resource_stats.c    ' +
+						'src/spx_hmap.c              ' +
+						'src/spx_str_builder.c       ' +
+						'src/spx_output_stream.c     ' +
+						'src/spx_php.c               ' +
+						'src/spx_stdio.c             ' +
+						'src/spx_config.c            ' +
+						'src/spx_utils.c             ' +
+						'src/spx_fmt.c';
+
+	if(PHP_SPX_DEV != 'no')
+	{
+		ADD_FLAG('CFLAGS_SPX', '/Zi');
+	}
+
+	AC_DEFINE('HAVE_SPX', 1);
+	PHP_INSTALL_HEADERS("ext/spx", "php_spx.h");
+	PHP_INSTALL_HEADERS("ext/spx/src", "php_spx.h spx_config.h spx_fmt.h spx_hmap.h spx_metric.h spx_output_stream.h spx_php.h spx_profiler.h spx_profiler_sampler.h spx_profiler_tracer.h spx_reporter_fp.h spx_reporter_full.h spx_reporter_trace.h spx_resource_stats.h spx_stdio.h spx_str_builder.h spx_utils.h");
+	EXTENSION('spx', spx_sources, PHP_SPX_SHARED, "/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1");
+}
+
